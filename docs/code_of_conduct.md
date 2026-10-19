@@ -31,3 +31,4 @@ Members will be polite, listen to everyone, and help any teammate who is struggl
 Team members will check in on one another to make sure these guidelines are being followed.
 
 ![Andrew's Signature](./res/images/sigAndrew.png)
+![Jacob's Signature](./res/images/sigJacob.png)
