@@ -32,6 +32,6 @@ Team members will check in on one another to make sure these guidelines are bein
 
 ![Andrew's Signature](./res/images/sigAndrew.png)
 ![Jacob's Signature](./res/images/sigJacob.png)
-![Proseth Signature](./res/images/signature.png)
+
 
 
