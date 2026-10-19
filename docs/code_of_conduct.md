@@ -30,4 +30,4 @@ Members will be polite, listen to everyone, and help any teammate who is struggl
 ### Enforcement and Feedback
 Team members will check in on one another to make sure these guidelines are being followed.
 
-![Andrew's Signature] (./res/images/sigAndrew.png)
+![Andrew's Signature](./res/images/sigAndrew.png)
