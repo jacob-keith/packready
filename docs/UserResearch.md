@@ -23,9 +23,13 @@ Remembering all necessary items is a common difficulty when packing.
 Out of 31 respondents, 24 (77.4%) packed from memory.In a separate question, 13 respondents (41.9%) selected remembering all necessary items as the most difficult part of packing.
 ### Team Action (if any):
 Provide an AI generated packing checklist based on the users activity. Allow users to add, remove, and check off items so they can easily track what they still need to pack.
+
 ## Observation 4:
 ### Observation Statement:
+A lot of people are actually pretty skeptical about AI and camera features in a packing app. They care about privacy and would rather have control themselves. So we shouldn't force AI on anyone.
 
 ### Supporting Data:
+Only 9% of people (3/32) wanted AI to scan photos of their bag to spot missing items. On top of that 28% (9/32) worried about privacy with photos or location. Also 25% (8/32) said they wouldn't trust an AI suggestion anyway. Meanwhile 53% (17/32) just wanted a simple way to manually check items off as they pack.
 
 ### Team Action (if any):
+Add a simple toggle in the settings to turn AI features on or off. That way anyone who doesn't trust it can just use the app manually. We should also never require camera or photo access.
