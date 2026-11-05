@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "917726439700",
+    "project_id": "packready-df249",
+    "storage_bucket": "packready-df249.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917726439700:android:b08ce36ed5ae580499ba01",
+        "android_client_info": {
+          "package_name": "com.mycompany.packready"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0yDu6DEjj329Xa37GUZ86Y4HWRCvNsn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
