@@ -133,6 +133,23 @@ Both versions will have the same layout, navigation, buttons, and features. Only
 | Current activity highlights | Clear green activity highlights |
 | Existing text contrast | Improved text contrast |
 
+
+### Success Criteria and Decision Rules
+
+To evaluate the effectiveness of each A/B test, we will compare the results of Version A and Version B using the metrics collected through Firebase Analytics.
+
+Color Contrast Test: Version B will be considered an improvement if users report higher satisfaction ratings.
+
+User Engagement: We will compare how frequently users interact with important buttons and navigation features.
+
+User Retention: We will monitor whether users return to PackReady within five days of their first session.
+
+If neither version demonstrates a meaningful improvement, we will keep the existing design and consider additional testing before making changes.
+
+Because PackReady may have a limited number of test participants, results will be interpreted cautiously rather than treated as statistically conclusive.
+
+
+
 ### Expected Result
 
 We expect Version B, the high-contrast color design, to improve readability and make PackReady easier to use in both light and dark modes.
