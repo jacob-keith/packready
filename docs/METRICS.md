@@ -28,3 +28,11 @@
 
 Note: Metrics that are not already tracked will require additional Firebase Analytics events or Firestore data collection.
 
+
+Onboarding Completion -- whenever a user creates a full profile and clicks submit after the onboarding screen have flutterflow report that to google analytics and also provide them their gender for extra marketing purposes
+
+
+
+
+
+
