@@ -31,6 +31,18 @@ Note: Metrics that are not already tracked will require additional Firebase Anal
 
 Onboarding Completion -- whenever a user creates a full profile and clicks submit after the onboarding screen have flutterflow report that to google analytics and also provide them their gender for extra marketing purposes
 
+## Metrics Evaluation and Improvement
+
+The PackReady team will use the collected metrics to identify areas where the application can be improved and determine whether users are having a positive experience.
+
+- **Low User Retention:** If users are not returning within' the first week, we will investigate whether the app provides enough value to encourage repeated use.
+- **Low Task Success Rate:** If users frequently abandon packing checklist creation, we will review the process to identify confusing steps or usability issues.
+- **Low Click-Through Rate:** If users utilize activity templates, we will consider improving its visibility, placement, or wording.
+- **Low User Satisfaction:** If Net Promoter Score (NPS) responses indicate dissatisfaction, we will review user feedback to identify potential improvements.
+- **Low Adoption:** If new users register but do not create their first packing list, we will evaluate the onboarding experience.
+
+These metrics will help guide future development decisions and allow the team to prioritize improvements based on user behavior rather than assumptions.
+
 
 
 
