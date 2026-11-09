@@ -209,3 +209,30 @@ If neither version shows a meaningful improvement, we will keep the existing des
 ### Expected Result
 
 We expect Version B to increase list completion and encourage users to return. However, Version A may perform just as well because its checklist is already simple.
+
+
+
+## A/B Test Name: One Flat List vs. Category Drop-Downs
+
+**User Story Number:** US4 (Issue #20)
+
+### Metrics
+- Time to Start Packing (Task Success): Seconds from when someone opens a trip packing list to when they check off their first item.
+- Items Packed Per Visit (Engagement): How many items someone checks off in one visit before leaving the checklist screen.
+
+### Hypothesis
+Right now every item on a trip gets dumped into one long list. Once a trip has 20 or 30 items, scrolling through shirts, chargers, toiletries, and documents all mixed together is annoying and makes it harder to pick a place to start, so people stall or close the app without packing anything.
+
+We are only changing one variable: grouping the checklist into collapsible category drop-downs (Clothes, Toiletries, Electronics, Misc) instead of one flat list, while keeping the exact same items, colors, and header. Letting people pack one spot at a time (closet first, then bathroom) should lower Time to Start Packing and raise how many items they check off per visit.
+
+### Experiment
+We will run a 50/50 split test in Firebase A/B Testing using a group_by_category boolean flag in Firebase Remote Config on trips with 10 or more items. A 50/50 split gives both versions equal traffic so we can compare them faster with a small user base, and filtering to 10+ items only tests trips long enough for categories to matter.
+
+When the checklist screen opens, the app saves a local timestamp. On the first item checked in that visit, Firebase Analytics logs a first_item_packed event with seconds_to_first_check and total_items, and logs how many items were checked during the visit so we can compare both groups.
+
+### Variations
+- Variant A (One Flat List, group_by_category = false): Current layout where all trip items sit in one list in the order they were added (like T-Shirts, Phone Charger, Toothbrush, Hoodie, and Deodorant all mixed together).
+- Variant B (Category Drop-Downs, group_by_category = true): Items are grouped under collapsible category headers (Clothes, Toiletries, Electronics, Misc) with the first unfinished category open by default. Starter templates (Gym, Travel, Camping) have default categories set, custom items let you pick a category when adding them, and anything else goes in Misc.
+
+### Expected Result
+Users in Variant B will check off their first item at least 20% faster (getting median Time to Start Packing under 25 seconds) and check off more items per visit, especially on longer Travel and Camping lists.
