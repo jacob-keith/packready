@@ -99,6 +99,14 @@ When a user completes their profile and taps **Submit** on the final onboarding 
 - **Events:** `sign_up`, `onboarding_complete`, `first_checklist_created` (fired once per user, guarded by a Firestore flag).
 - **Measurement:** Funnel from `sign_up` to `onboarding_complete` to `first_checklist_created`, plus time between steps.
 
+### 2.6 Time to Start Packing
+
+- **HEART Category:** Task Success / Engagement
+- **What it is:** How many seconds it takes from when someone opens their trip packing list to when they check off their first item.
+- **Why we care:** The whole point of PackReady is helping people actually get started instead of putting off packing until the last minute. If someone generates a list, opens it, and closes the app without checking anything off, the list probably felt like too much work to deal with. If the time to that first check-off is low, it means people are opening the list and immediately finding something easy to grab and pack.
+- **How we'll track it (Firebase Analytics):** Save a timestamp when the packing list page opens. The first time the user checks an item off during that visit, log a `first_item_packed` event to Firebase with `seconds_to_first_check` (current time minus open time) and `total_items` on the list. (Not wired up in the app yet.)
+- **Goal:** Median under 30 seconds from opening the list to checking off the first item.
+
 ## 3. Implementation Notes
 
 - Use snake_case event names under 40 characters, with 25 or fewer parameters per event.
