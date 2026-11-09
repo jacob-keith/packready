@@ -159,3 +159,53 @@ Users may find it easier to identify selected activities, locate important butto
 However, some users may prefer the softer colors of Version A.
 
 We will compare Firebase Analytics data and user satisfaction ratings to determine which color design provides a better user experience.
+
+
+## A/B Test Name: Plain Checklist vs. Packing Progress Indicator
+
+**User Story Number:** [Add the user story number related to checking off items in a packing list]
+
+### Metrics
+- **Task Success:** Percentage of packing lists that reach 100% checked.
+- **Engagement:** Average number of items checked per session.
+- **Happiness:** User satisfaction with the packing list.
+- **Retention:** Percentage of users who return after 7 days.
+
+### Hypothesis
+
+Currently, PackReady shows a plain checklist with no feedback on how much of the list is done. Some users may stop part-way because they cannot tell how close they are to finishing.
+
+We believe adding a progress bar and an "All packed!" message will help more users finish their packing lists and return to the app.
+
+### Experiment
+
+We will use Firebase A/B Testing and Firebase Remote Config to compare two packing list designs.
+
+- 50% of eligible users will see Version A, the current plain checklist.
+- 50% of eligible users will see Version B, the checklist with a progress indicator.
+- Firebase Analytics will record `packing_list_opened`, `item_checked`, and `packing_list_completed`.
+- The main success metric will be the percentage of opened lists that are completed.
+- We will collect a thumbs up / thumbs down rating after a list is completed.
+- The experiment will run for at least two weeks, provided enough users participate.
+
+### Variations
+
+**Version A: Plain Checklist (Current Design)**
+- Items have checkboxes, with no progress information.
+- Nothing happens when the last item is checked.
+
+**Version B: Progress Indicator (New Design)**
+- A progress bar and a label such as "7 of 12 packed" update as items are checked.
+- An "All packed!" message appears when every item is checked.
+
+Both versions will have the same layout, colors, and features. Only the progress feedback will change.
+
+### Success Criteria and Decision Rules
+
+Version B will be considered an improvement if it has a higher list completion rate than Version A. We will also compare items checked per session, satisfaction ratings, and 7-day retention.
+
+If neither version shows a meaningful improvement, we will keep the existing design. Because PackReady may have few test participants, results will be interpreted cautiously rather than treated as statistically conclusive.
+
+### Expected Result
+
+We expect Version B to increase list completion and encourage users to return. However, Version A may perform just as well because its checklist is already simple.
