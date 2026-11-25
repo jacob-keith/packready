@@ -1,14 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -87,6 +95,51 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? MainscreenWidget() : LoginWidget(),
         ),
         FFRoute(
+          name: SignupWidget.routeName,
+          path: SignupWidget.routePath,
+          builder: (context, params) => SignupWidget(),
+        ),
+        FFRoute(
+          name: SettingsWidget.routeName,
+          path: SettingsWidget.routePath,
+          builder: (context, params) => SettingsWidget(),
+        ),
+        FFRoute(
+          name: SubscriptionPlansWidget.routeName,
+          path: SubscriptionPlansWidget.routePath,
+          builder: (context, params) => SubscriptionPlansWidget(),
+        ),
+        FFRoute(
+          name: ActivityEditorWidget.routeName,
+          path: ActivityEditorWidget.routePath,
+          builder: (context, params) => ActivityEditorWidget(
+            listRef: params.getParam(
+              'listRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'packingLists'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ActivitiesWidget.routeName,
+          path: ActivitiesWidget.routePath,
+          builder: (context, params) => ActivitiesWidget(
+            tabSlideOffset: params.getParam(
+              'tabSlideOffset',
+              ParamType.double,
+            ),
+            tabHandoff: params.getParam(
+              'tabHandoff',
+              ParamType.String,
+            ),
+            embedInTabShell: params.getParam(
+              'embedInTabShell',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
           name: TemplateEditorWidget.routeName,
           path: TemplateEditorWidget.routePath,
           builder: (context, params) => TemplateEditorWidget(
@@ -114,7 +167,103 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: true,
               structBuilder: PackItemStruct.fromSerializableMap,
             ),
+            calendarAi: params.getParam(
+              'calendarAi',
+              ParamType.JSON,
+            ),
+            calendarPrompt: params.getParam(
+              'calendarPrompt',
+              ParamType.bool,
+            ),
+            calendarActivityMode: params.getParam(
+              'calendarActivityMode',
+              ParamType.bool,
+            ),
+            startAiExtras: params.getParam<PackItemStruct>(
+              'startAiExtras',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: PackItemStruct.fromSerializableMap,
+            ),
+            startFromAiDraft: params.getParam(
+              'startFromAiDraft',
+              ParamType.bool,
+            ),
           ),
+        ),
+        FFRoute(
+          name: PackReadyAiWidget.routeName,
+          path: PackReadyAiWidget.routePath,
+          builder: (context, params) => PackReadyAiWidget(
+            embedInTabShell: params.getParam(
+              'embedInTabShell',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ConnectionsWidget.routeName,
+          path: ConnectionsWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => ConnectionsWidget(
+            embedInTabShell: params.getParam(
+              'embedInTabShell',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TemplatesWidget.routeName,
+          path: TemplatesWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => TemplatesWidget(),
+        ),
+        FFRoute(
+          name: MyActivitiesWidget.routeName,
+          path: MyActivitiesWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => MyActivitiesWidget(),
+        ),
+        FFRoute(
+          name: LoginWidget.routeName,
+          path: LoginWidget.routePath,
+          builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
+          builder: (context, params) => ProfileWidget(
+            tabSlideOffset: params.getParam(
+              'tabSlideOffset',
+              ParamType.double,
+            ),
+            tabHandoff: params.getParam(
+              'tabHandoff',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TestpageWidget.routeName,
+          path: TestpageWidget.routePath,
+          builder: (context, params) => TestpageWidget(),
+        ),
+        FFRoute(
+          name: PackingListWidget.routeName,
+          path: PackingListWidget.routePath,
+          builder: (context, params) => PackingListWidget(
+            listRef: params.getParam(
+              'listRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'packingLists'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ProfileSetupInfoWidget.routeName,
+          path: ProfileSetupInfoWidget.routePath,
+          builder: (context, params) => ProfileSetupInfoWidget(),
         ),
         FFRoute(
           name: ChecklistRunWidget.routeName,
@@ -147,41 +296,57 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: ActivitiesWidget.routeName,
-          path: ActivitiesWidget.routePath,
-          builder: (context, params) => ActivitiesWidget(),
-        ),
-        FFRoute(
-          name: TestWidget.routeName,
-          path: TestWidget.routePath,
-          builder: (context, params) => TestWidget(),
-        ),
-        FFRoute(
           name: HistoryPageWidget.routeName,
           path: HistoryPageWidget.routePath,
           builder: (context, params) => HistoryPageWidget(),
         ),
         FFRoute(
-          name: PackingListWidget.routeName,
-          path: PackingListWidget.routePath,
-          builder: (context, params) => PackingListWidget(
-            listRef: params.getParam(
-              'listRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['users', 'packingLists'],
+          name: RemindersPageWidget.routeName,
+          path: RemindersPageWidget.routePath,
+          builder: (context, params) => RemindersPageWidget(
+            tabSlideOffset: params.getParam(
+              'tabSlideOffset',
+              ParamType.double,
+            ),
+            tabHandoff: params.getParam(
+              'tabHandoff',
+              ParamType.String,
+            ),
+            embedInTabShell: params.getParam(
+              'embedInTabShell',
+              ParamType.bool,
             ),
           ),
         ),
         FFRoute(
-          name: SignupWidget.routeName,
-          path: SignupWidget.routePath,
-          builder: (context, params) => SignupWidget(),
+          name: MainscreenWidget.routeName,
+          path: MainscreenWidget.routePath,
+          builder: (context, params) => MainscreenWidget(
+            tabSlideOffset: params.getParam(
+              'tabSlideOffset',
+              ParamType.double,
+            ),
+            tabHandoff: params.getParam(
+              'tabHandoff',
+              ParamType.String,
+            ),
+            embedHome: params.getParam(
+              'embedHome',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
-          name: LoginWidget.routeName,
-          path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
+          name: PackReadyAiConfirmationWidget.routeName,
+          path: PackReadyAiConfirmationWidget.routePath,
+          builder: (context, params) => PackReadyAiConfirmationWidget(
+            plan: params.getParam(
+              'plan',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: PackReadyAiPlanStruct.fromSerializableMap,
+            ),
+          ),
         ),
         FFRoute(
           name: EditpageWidget.routeName,
@@ -189,19 +354,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => EditpageWidget(),
         ),
         FFRoute(
-          name: ProfileWidget.routeName,
-          path: ProfileWidget.routePath,
-          builder: (context, params) => ProfileWidget(),
-        ),
-        FFRoute(
-          name: ProfileSetupInfoWidget.routeName,
-          path: ProfileSetupInfoWidget.routePath,
-          builder: (context, params) => ProfileSetupInfoWidget(),
-        ),
-        FFRoute(
-          name: MainscreenWidget.routeName,
-          path: MainscreenWidget.routePath,
-          builder: (context, params) => MainscreenWidget(),
+          name: CalendarWidget.routeName,
+          path: CalendarWidget.routePath,
+          builder: (context, params) => CalendarWidget(
+            embedInTabShell: params.getParam(
+              'embedInTabShell',
+              ParamType.bool,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -399,7 +559,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

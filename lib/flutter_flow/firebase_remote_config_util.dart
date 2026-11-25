@@ -9,6 +9,7 @@ Future initializeFirebaseRemoteConfig() async {
     await FirebaseRemoteConfig.instance.setDefaults(const {
       'show_bottom_nav': false,
       'color_change': false,
+      'group_by_category': false,
     });
     await FirebaseRemoteConfig.instance.fetchAndActivate();
   } catch (error) {

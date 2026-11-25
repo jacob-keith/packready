@@ -3,7 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
+import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class PackItemStruct extends FFFirebaseStruct {
@@ -11,10 +13,12 @@ class PackItemStruct extends FFFirebaseStruct {
     String? name,
     String? detail,
     bool? packed,
+    String? category,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _detail = detail,
         _packed = packed,
+        _category = category,
         super(firestoreUtilData);
 
   // "name" field.
@@ -38,10 +42,18 @@ class PackItemStruct extends FFFirebaseStruct {
 
   bool hasPacked() => _packed != null;
 
+  // "category" field.
+  String? _category;
+  String get category => _category ?? '';
+  set category(String? val) => _category = val;
+
+  bool hasCategory() => _category != null;
+
   static PackItemStruct fromMap(Map<String, dynamic> data) => PackItemStruct(
         name: data['name'] as String?,
         detail: data['detail'] as String?,
         packed: data['packed'] as bool?,
+        category: data['category'] as String?,
       );
 
   static PackItemStruct? maybeFromMap(dynamic data) =>
@@ -51,6 +63,7 @@ class PackItemStruct extends FFFirebaseStruct {
         'name': _name,
         'detail': _detail,
         'packed': _packed,
+        'category': _category,
       }.withoutNulls;
 
   @override
@@ -66,6 +79,10 @@ class PackItemStruct extends FFFirebaseStruct {
         'packed': serializeParam(
           _packed,
           ParamType.bool,
+        ),
+        'category': serializeParam(
+          _category,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -86,6 +103,11 @@ class PackItemStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        category: deserializeParam(
+          data['category'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -96,17 +118,20 @@ class PackItemStruct extends FFFirebaseStruct {
     return other is PackItemStruct &&
         name == other.name &&
         detail == other.detail &&
-        packed == other.packed;
+        packed == other.packed &&
+        category == other.category;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([name, detail, packed]);
+  int get hashCode =>
+      const ListEquality().hash([name, detail, packed, category]);
 }
 
 PackItemStruct createPackItemStruct({
   String? name,
   String? detail,
   bool? packed,
+  String? category,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -116,6 +141,7 @@ PackItemStruct createPackItemStruct({
       name: name,
       detail: detail,
       packed: packed,
+      category: category,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

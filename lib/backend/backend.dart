@@ -5,8 +5,12 @@ import '../auth/firebase_auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
-import 'schema/packing_lists_record.dart';
 import 'schema/checklist_templates_record.dart';
+import 'schema/packing_lists_record.dart';
+import 'schema/connection_handles_record.dart';
+import 'schema/shared_items_record.dart';
+import 'schema/connections_record.dart';
+import 'schema/subscriptions_record.dart';
 import 'schema/users_record.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -16,9 +20,53 @@ export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
-export 'schema/packing_lists_record.dart';
 export 'schema/checklist_templates_record.dart';
+export 'schema/packing_lists_record.dart';
+export 'schema/connection_handles_record.dart';
+export 'schema/shared_items_record.dart';
+export 'schema/connections_record.dart';
+export 'schema/subscriptions_record.dart';
 export 'schema/users_record.dart';
+
+/// Functions to query ChecklistTemplatesRecords (as a Stream and as a Future).
+Future<int> queryChecklistTemplatesRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ChecklistTemplatesRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ChecklistTemplatesRecord>> queryChecklistTemplatesRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChecklistTemplatesRecord.collection(parent),
+      ChecklistTemplatesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChecklistTemplatesRecord>> queryChecklistTemplatesRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChecklistTemplatesRecord.collection(parent),
+      ChecklistTemplatesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
 
 /// Functions to query PackingListsRecords (as a Stream and as a Future).
 Future<int> queryPackingListsRecordCount({
@@ -60,41 +108,149 @@ Future<List<PackingListsRecord>> queryPackingListsRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query ChecklistTemplatesRecords (as a Stream and as a Future).
-Future<int> queryChecklistTemplatesRecordCount({
-  DocumentReference? parent,
+/// Functions to query ConnectionHandlesRecords (as a Stream and as a Future).
+Future<int> queryConnectionHandlesRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      ChecklistTemplatesRecord.collection(parent),
+      ConnectionHandlesRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<ChecklistTemplatesRecord>> queryChecklistTemplatesRecord({
-  DocumentReference? parent,
+Stream<List<ConnectionHandlesRecord>> queryConnectionHandlesRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      ChecklistTemplatesRecord.collection(parent),
-      ChecklistTemplatesRecord.fromSnapshot,
+      ConnectionHandlesRecord.collection,
+      ConnectionHandlesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<ChecklistTemplatesRecord>> queryChecklistTemplatesRecordOnce({
-  DocumentReference? parent,
+Future<List<ConnectionHandlesRecord>> queryConnectionHandlesRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      ChecklistTemplatesRecord.collection(parent),
-      ChecklistTemplatesRecord.fromSnapshot,
+      ConnectionHandlesRecord.collection,
+      ConnectionHandlesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SharedItemsRecords (as a Stream and as a Future).
+Future<int> querySharedItemsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SharedItemsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SharedItemsRecord>> querySharedItemsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SharedItemsRecord.collection,
+      SharedItemsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SharedItemsRecord>> querySharedItemsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SharedItemsRecord.collection,
+      SharedItemsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ConnectionsRecords (as a Stream and as a Future).
+Future<int> queryConnectionsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ConnectionsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ConnectionsRecord>> queryConnectionsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ConnectionsRecord.collection,
+      ConnectionsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ConnectionsRecord>> queryConnectionsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ConnectionsRecord.collection,
+      ConnectionsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SubscriptionsRecords (as a Stream and as a Future).
+Future<int> querySubscriptionsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SubscriptionsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SubscriptionsRecord>> querySubscriptionsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SubscriptionsRecord.collection,
+      SubscriptionsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SubscriptionsRecord>> querySubscriptionsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SubscriptionsRecord.collection,
+      SubscriptionsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

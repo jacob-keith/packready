@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,6 +46,11 @@ class ChecklistTemplatesRecord extends FirestoreRecord {
   List<PackItemStruct> get items => _items ?? const [];
   bool hasItems() => _items != null;
 
+  // "finished" field.
+  bool? _finished;
+  bool get finished => _finished ?? false;
+  bool hasFinished() => _finished != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -57,6 +63,7 @@ class ChecklistTemplatesRecord extends FirestoreRecord {
       snapshotData['items'],
       PackItemStruct.fromMap,
     );
+    _finished = snapshotData['finished'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -105,6 +112,7 @@ Map<String, dynamic> createChecklistTemplatesRecordData({
   String? starterName,
   DateTime? createdTime,
   DateTime? updatedTime,
+  bool? finished,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -113,6 +121,7 @@ Map<String, dynamic> createChecklistTemplatesRecordData({
       'starterName': starterName,
       'createdTime': createdTime,
       'updatedTime': updatedTime,
+      'finished': finished,
     }.withoutNulls,
   );
 
@@ -131,7 +140,8 @@ class ChecklistTemplatesRecordDocumentEquality
         e1?.starterName == e2?.starterName &&
         e1?.createdTime == e2?.createdTime &&
         e1?.updatedTime == e2?.updatedTime &&
-        listEquality.equals(e1?.items, e2?.items);
+        listEquality.equals(e1?.items, e2?.items) &&
+        e1?.finished == e2?.finished;
   }
 
   @override
@@ -141,7 +151,8 @@ class ChecklistTemplatesRecordDocumentEquality
         e?.starterName,
         e?.createdTime,
         e?.updatedTime,
-        const ListEquality().hash(e?.items)
+        const ListEquality().hash(e?.items),
+        e?.finished
       ]);
 
   @override
