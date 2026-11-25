@@ -1,0 +1,238 @@
+# PackReady A/B Test Design
+
+## A/B Test Name: Large Button vs. Bottom Navigation Bar
+
+**User Story Number:** [Add the user story number for creating activity templates or accessing packing lists]
+
+### Metrics
+- **Engagement:** Click-through rate (CTR) for creating activity templates.
+- **Task Success:** Percentage of users who successfully create an activity template.
+- **Happiness:** User satisfaction with the navigation design.
+- **Retention:** Percentage of users who return to PackReady after 7 days.
+
+### Hypothesis
+
+Currently, PackReady uses one large "Create activity template" button on the main screen. Users must use this button to start creating a new activity template, while other options like Edit Profile and Logout appear separately.
+
+We want to find out whether this simple button design or a bottom navigation bar is easier for users.
+
+We believe adding a bottom navigation bar with Home, Create, and Profile will make the app easier to navigate and help users access important features faster.
+
+### Experiment
+
+We will use Firebase A/B Testing and Firebase Remote Config to compare two navigation designs.
+
+- 50% of eligible users will see Version A, the current large button design.
+- 50% of eligible users will see Version B, the bottom navigation bar design.
+- Firebase Remote Config will control which navigation design users see.
+- Firebase Analytics will track button clicks, template creation, and user engagement.
+- We will record custom events such as `home_view`, `create_entry_tap`, and `template_created`.
+- The main success metric will be the percentage of users who successfully create a template.
+- We will also compare navigation click-through rates and user retention.
+- The experiment will run for at least two weeks, with enough users needed for meaningful results.
+
+### Variations
+
+**Version A: Large Button (Current Design)**
+
+- The main screen has one large "Create activity template" button.
+- Edit Profile and Logout appear as separate options.
+- Users click the large button to begin creating a packing template.
+
+**Version B: Bottom Navigation Bar (New Design)**
+
+- The main screen includes a bottom navigation bar.
+- The navigation bar contains Home, Create, and Profile.
+- Users select Create from the bottom bar to begin creating a packing template.
+- Users can access their profile directly from the navigation bar.
+
+Both versions will provide the same main features and use the same colors. The main difference will be the navigation design.
+
+### Simple Design Comparison
+
+| Version A: Current Design | Version B: New Design |
+|---|---|
+| PackReady Home | PackReady Home |
+| Recent Activities | Recent Activities |
+| Past Activities | Past Activities |
+| **[ Create activity template ]** | |
+| Edit Profile | |
+| Logout | |
+| | **[ Home / Create / Profile ]** |
+
+### Expected Result
+
+We expect Version B, the bottom navigation bar, to help users navigate PackReady more easily and increase engagement.
+
+However, Version A may perform better because its large button is simple and easy to notice.
+
+We will use Firebase Analytics results to determine which design helps more users successfully create packing templates.
+
+## A/B Test Name: Standard Colors vs. High-Contrast Colors in Light and Dark Mode
+
+**User Story Number:** [Add the user story number related to app appearance or user interface]
+
+### Metrics
+- **Happiness:** User satisfaction with the app's colors and appearance.
+- **Engagement:** Click-through rate (CTR) for buttons and activities.
+- **Task Success:** Percentage of users who successfully create packing templates.
+- **Retention:** Percentage of users who return to PackReady after 7 days.
+
+### Hypothesis
+
+Currently, PackReady supports light mode and dark mode with different background, text, and button colors.
+
+Some users may find certain buttons, text, and selected activities difficult to see because the colors do not stand out enough, especially in dark mode.
+
+We want to find out whether the current color design or a higher-contrast color design makes PackReady easier to read and use.
+
+We believe improving the color contrast in both light and dark modes will make buttons easier to recognize, improve readability, and help users complete their packing activities more easily.
+
+### Experiment
+
+We will use Firebase A/B Testing and Firebase Remote Config to compare two color designs.
+
+- 50% of eligible users will see Version A, the current PackReady color design.
+- 50% of eligible users will see Version B, the improved high-contrast color design.
+- Both versions will support light mode and dark mode.
+- Firebase Remote Config will determine which color palette users receive.
+- Firebase Analytics will track button clicks, activity selections, and successfully created packing templates.
+- Custom events such as `activity_selected`, `create_entry_tap`, and `template_created` will be recorded.
+- We will collect user satisfaction ratings through a short in-app survey and store responses in Firebase.
+- We will compare results separately for light-mode and dark-mode users.
+- The experiment will run for at least two weeks, provided enough users participate.
+
+### Variations
+
+**Version A: Standard Color Design (Current Design)**
+
+- Uses PackReady's existing light and dark mode colors.
+- Light mode uses light backgrounds with dark text.
+- Dark mode uses dark backgrounds with lighter text.
+- Buttons and selected activities use the current highlight colors.
+- Users can switch between light mode and dark mode.
+
+**Version B: High-Contrast Color Design (New Design)**
+
+- Uses stronger contrast between text and backgrounds.
+- Buttons have more noticeable colors.
+- Selected activities use a clearer green highlight.
+- Light mode uses darker text and more visible button colors.
+- Dark mode uses brighter text and clearer button highlights.
+- Users can still switch between light mode and dark mode.
+
+Both versions will have the same layout, navigation, buttons, and features. Only the color palette will change.
+
+### Simple Design Comparison
+
+| Version A: Standard Colors | Version B: High-Contrast Colors |
+|---|---|
+| Current light background | Light background with stronger text contrast |
+| Current dark background | Dark background with brighter readable text |
+| Existing button colors | More visible button colors |
+| Current activity highlights | Clear green activity highlights |
+| Existing text contrast | Improved text contrast |
+
+
+### Success Criteria and Decision Rules
+
+To evaluate the effectiveness of each A/B test, we will compare the results of Version A and Version B using the metrics collected through Firebase Analytics.
+
+Color Contrast Test: Version B will be considered an improvement if users report higher satisfaction ratings.
+
+User Engagement: We will compare how frequently users interact with important buttons and navigation features.
+
+User Retention: We will monitor whether users return to PackReady within five days of their first session.
+
+If neither version demonstrates a meaningful improvement, we will keep the existing design and consider additional testing before making changes.
+
+Because PackReady may have a limited number of test participants, results will be interpreted cautiously rather than treated as statistically conclusive.
+
+
+
+### Expected Result
+
+We expect Version B, the high-contrast color design, to improve readability and make PackReady easier to use in both light and dark modes.
+
+Users may find it easier to identify selected activities, locate important buttons, and create packing templates.
+
+However, some users may prefer the softer colors of Version A.
+
+We will compare Firebase Analytics data and user satisfaction ratings to determine which color design provides a better user experience.
+
+
+## A/B Test Name: Plain Checklist vs. Packing Progress Indicator
+
+**User Story Number:** [Add the user story number related to checking off items in a packing list]
+
+### Metrics
+- **Task Success:** Percentage of packing lists that reach 100% checked.
+- **Engagement:** Average number of items checked per session.
+- **Happiness:** User satisfaction with the packing list.
+- **Retention:** Percentage of users who return after 7 days.
+
+### Hypothesis
+
+Currently, PackReady shows a plain checklist with no feedback on how much of the list is done. Some users may stop part-way because they cannot tell how close they are to finishing.
+
+We believe adding a progress bar and an "All packed!" message will help more users finish their packing lists and return to the app.
+
+### Experiment
+
+We will use Firebase A/B Testing and Firebase Remote Config to compare two packing list designs.
+
+- 50% of eligible users will see Version A, the current plain checklist.
+- 50% of eligible users will see Version B, the checklist with a progress indicator.
+- Firebase Analytics will record `packing_list_opened`, `item_checked`, and `packing_list_completed`.
+- The main success metric will be the percentage of opened lists that are completed.
+- We will collect a thumbs up / thumbs down rating after a list is completed.
+- The experiment will run for at least two weeks, provided enough users participate.
+
+### Variations
+
+**Version A: Plain Checklist (Current Design)**
+- Items have checkboxes, with no progress information.
+- Nothing happens when the last item is checked.
+
+**Version B: Progress Indicator (New Design)**
+- A progress bar and a label such as "7 of 12 packed" update as items are checked.
+- An "All packed!" message appears when every item is checked.
+
+Both versions will have the same layout, colors, and features. Only the progress feedback will change.
+
+### Success Criteria and Decision Rules
+
+Version B will be considered an improvement if it has a higher list completion rate than Version A. We will also compare items checked per session, satisfaction ratings, and 7-day retention.
+
+If neither version shows a meaningful improvement, we will keep the existing design. Because PackReady may have few test participants, results will be interpreted cautiously rather than treated as statistically conclusive.
+
+### Expected Result
+
+We expect Version B to increase list completion and encourage users to return. However, Version A may perform just as well because its checklist is already simple.
+
+
+
+## A/B Test Name: One Flat List vs. Category Drop-Downs
+
+**User Story Number:** US4 (Issue #20)
+
+### Metrics
+- Time to Start Packing (Task Success): Seconds from when someone opens a trip packing list to when they check off their first item.
+- Items Packed Per Visit (Engagement): How many items someone checks off in one visit before leaving the checklist screen.
+
+### Hypothesis
+Right now every item on a trip gets dumped into one long list. Once a trip has 20 or 30 items, scrolling through shirts, chargers, toiletries, and documents all mixed together is annoying and makes it harder to pick a place to start, so people stall or close the app without packing anything.
+
+We are only changing one variable: grouping the checklist into collapsible category drop-downs (Clothes, Toiletries, Electronics, Misc) instead of one flat list, while keeping the exact same items, colors, and header. Letting people pack one spot at a time (closet first, then bathroom) should lower Time to Start Packing and raise how many items they check off per visit.
+
+### Experiment
+We will run a 50/50 split test in Firebase A/B Testing using a group_by_category boolean flag in Firebase Remote Config on trips with 10 or more items. A 50/50 split gives both versions equal traffic so we can compare them faster with a small user base, and filtering to 10+ items only tests trips long enough for categories to matter.
+
+When the checklist screen opens, the app saves a local timestamp. On the first item checked in that visit, Firebase Analytics logs a first_item_packed event with seconds_to_first_check and total_items, and logs how many items were checked during the visit so we can compare both groups.
+
+### Variations
+- Variant A (One Flat List, group_by_category = false): Current layout where all trip items sit in one list in the order they were added (like T-Shirts, Phone Charger, Toothbrush, Hoodie, and Deodorant all mixed together).
+- Variant B (Category Drop-Downs, group_by_category = true): Items are grouped under collapsible category headers (Clothes, Toiletries, Electronics, Misc) with the first unfinished category open by default. Starter templates (Gym, Travel, Camping) have default categories set, custom items let you pick a category when adding them, and anything else goes in Misc.
+
+### Expected Result
+Users in Variant B will check off their first item at least 20% faster (getting median Time to Start Packing under 25 seconds) and check off more items per visit, especially on longer Travel and Camping lists.
