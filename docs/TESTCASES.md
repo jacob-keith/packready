@@ -5,3 +5,7 @@
 - [Us2: User Login](https://docs.google.com/presentation/d/1MdJtUqXrkXoJMpRGQEvk3Q2aX9ZKhZ8i2MDKWn3EtNA/edit?usp=sharing)
 ## US3: Profile Creation
 - [US3: Profile Creation](https://docs.google.com/presentation/d/1NwgSYu9sIBT2sQsWQZAzrIVT0oUphcFSKJdl9K1Nl-E/edit?usp=sharing)
+
+
+## US5: Additional Features
+- [US5: Additional Features](https://docs.google.com/presentation/d/1erDAjskNgCVUyYGxxJjex5gA70tPzfQFb4fVLMDi8DY/edit?usp=sharing)
