@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -52,6 +53,16 @@ class PackingListsRecord extends FirestoreRecord {
   bool get recurring => _recurring ?? false;
   bool hasRecurring() => _recurring != null;
 
+  // "reminderTime" field.
+  DateTime? _reminderTime;
+  DateTime? get reminderTime => _reminderTime;
+  bool hasReminderTime() => _reminderTime != null;
+
+  // "reminderNote" field.
+  String? _reminderNote;
+  String get reminderNote => _reminderNote ?? '';
+  bool hasReminderNote() => _reminderNote != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -65,6 +76,8 @@ class PackingListsRecord extends FirestoreRecord {
       PackItemStruct.fromMap,
     );
     _recurring = snapshotData['recurring'] as bool?;
+    _reminderTime = snapshotData['reminderTime'] as DateTime?;
+    _reminderNote = snapshotData['reminderNote'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -112,6 +125,8 @@ Map<String, dynamic> createPackingListsRecordData({
   DateTime? leaveDate,
   bool? completed,
   bool? recurring,
+  DateTime? reminderTime,
+  String? reminderNote,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -121,6 +136,8 @@ Map<String, dynamic> createPackingListsRecordData({
       'leaveDate': leaveDate,
       'completed': completed,
       'recurring': recurring,
+      'reminderTime': reminderTime,
+      'reminderNote': reminderNote,
     }.withoutNulls,
   );
 
@@ -140,7 +157,9 @@ class PackingListsRecordDocumentEquality
         e1?.leaveDate == e2?.leaveDate &&
         e1?.completed == e2?.completed &&
         listEquality.equals(e1?.items, e2?.items) &&
-        e1?.recurring == e2?.recurring;
+        e1?.recurring == e2?.recurring &&
+        e1?.reminderTime == e2?.reminderTime &&
+        e1?.reminderNote == e2?.reminderNote;
   }
 
   @override
@@ -151,7 +170,9 @@ class PackingListsRecordDocumentEquality
         e?.leaveDate,
         e?.completed,
         const ListEquality().hash(e?.items),
-        e?.recurring
+        e?.recurring,
+        e?.reminderTime,
+        e?.reminderNote
       ]);
 
   @override

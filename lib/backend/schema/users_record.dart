@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -90,6 +91,35 @@ class UsersRecord extends FirestoreRecord {
   String get userProfileTrip => _userProfileTrip ?? '';
   bool hasUserProfileTrip() => _userProfileTrip != null;
 
+  // "rated" field.
+  bool? _rated;
+  bool get rated => _rated ?? false;
+  bool hasRated() => _rated != null;
+
+  // "logincount" field.
+  int? _logincount;
+  int get logincount => _logincount ?? 0;
+  bool hasLogincount() => _logincount != null;
+
+  // "dailyReminderEnabled" field.
+  bool? _dailyReminderEnabled;
+  bool get dailyReminderEnabled => _dailyReminderEnabled ?? false;
+  bool hasDailyReminderEnabled() => _dailyReminderEnabled != null;
+
+  // "connectionHandle" field.
+  String? _connectionHandle;
+
+  /// Normalized PackReady username with an optional #tag.
+  String get connectionHandle => _connectionHandle ?? '';
+  bool hasConnectionHandle() => _connectionHandle != null;
+
+  // "connectionTag" field.
+  String? _connectionTag;
+
+  /// Automatically reserved name and four-digit discriminator.
+  String get connectionTag => _connectionTag ?? '';
+  bool hasConnectionTag() => _connectionTag != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -106,6 +136,11 @@ class UsersRecord extends FirestoreRecord {
     _profileLevel = snapshotData['profileLevel'] as String?;
     _profilePercentage = castToType<int>(snapshotData['profilePercentage']);
     _userProfileTrip = snapshotData['userProfileTrip'] as String?;
+    _rated = snapshotData['rated'] as bool?;
+    _logincount = castToType<int>(snapshotData['logincount']);
+    _dailyReminderEnabled = snapshotData['dailyReminderEnabled'] as bool?;
+    _connectionHandle = snapshotData['connectionHandle'] as String?;
+    _connectionTag = snapshotData['connectionTag'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -155,6 +190,11 @@ Map<String, dynamic> createUsersRecordData({
   String? profileLevel,
   int? profilePercentage,
   String? userProfileTrip,
+  bool? rated,
+  int? logincount,
+  bool? dailyReminderEnabled,
+  String? connectionHandle,
+  String? connectionTag,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -172,6 +212,11 @@ Map<String, dynamic> createUsersRecordData({
       'profileLevel': profileLevel,
       'profilePercentage': profilePercentage,
       'userProfileTrip': userProfileTrip,
+      'rated': rated,
+      'logincount': logincount,
+      'dailyReminderEnabled': dailyReminderEnabled,
+      'connectionHandle': connectionHandle,
+      'connectionTag': connectionTag,
     }.withoutNulls,
   );
 
@@ -198,7 +243,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.activities, e2?.activities) &&
         e1?.profileLevel == e2?.profileLevel &&
         e1?.profilePercentage == e2?.profilePercentage &&
-        e1?.userProfileTrip == e2?.userProfileTrip;
+        e1?.userProfileTrip == e2?.userProfileTrip &&
+        e1?.rated == e2?.rated &&
+        e1?.logincount == e2?.logincount &&
+        e1?.dailyReminderEnabled == e2?.dailyReminderEnabled &&
+        e1?.connectionHandle == e2?.connectionHandle &&
+        e1?.connectionTag == e2?.connectionTag;
   }
 
   @override
@@ -217,7 +267,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         const ListEquality().hash(e?.activities),
         e?.profileLevel,
         e?.profilePercentage,
-        e?.userProfileTrip
+        e?.userProfileTrip,
+        e?.rated,
+        e?.logincount,
+        e?.dailyReminderEnabled,
+        e?.connectionHandle,
+        e?.connectionTag
       ]);
 
   @override

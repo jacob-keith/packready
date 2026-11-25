@@ -56,7 +56,30 @@ abstract class FlutterFlowTheme {
   late Color error;
   late Color info;
 
-  late Color surfaceVariant;
+  late Color neutralPanel;
+  late Color onPrimary;
+  late Color softShadow;
+  late Color lightCardShadow;
+  late Color weatherLowInk;
+  late Color weatherHighInk;
+  late Color tabBarSurface;
+  late Color tabBarIdleInk;
+  late Color tabBarActiveInk;
+  late Color tabBarActivePill;
+  late Color packedGreen;
+  late Color packedGreenTint;
+  late Color pendingYellow;
+  late Color pendingYellowTint;
+  late Color unpackedOrange;
+  late Color unpackedOrangeTint;
+  late Color calendarEventSlate;
+  late Color calendarEventTint;
+  late Color linkGreen;
+  late Color subtleText;
+  late Color subtleDivider;
+  late Color warmTerracottaTint;
+  late Color selectedSurface;
+  late Color onLimeCta;
 
   FFDesignTokens get designToken => FFDesignTokens(this);
 
@@ -146,24 +169,47 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF769C47);
-  late Color secondary = const Color(0xFFBFA85C);
-  late Color tertiary = const Color(0xFFDAA46D);
-  late Color alternate = const Color(0xFFD2DAE2);
-  late Color primaryText = const Color(0xFF1E272E);
-  late Color secondaryText = const Color(0xFF485460);
-  late Color primaryBackground = const Color(0xFFFFFFFF);
-  late Color secondaryBackground = const Color(0xFFF8F9FA);
-  late Color accent1 = const Color(0xFFD4DFCC);
-  late Color accent2 = const Color(0xFFCBC4B3);
-  late Color accent3 = const Color(0xFFACBCA3);
+  late Color primary = const Color(0xFF2E5E36);
+  late Color secondary = const Color(0xFF769C47);
+  late Color tertiary = const Color(0xFF77522D);
+  late Color alternate = const Color(0xFFD5DFD0);
+  late Color primaryText = const Color(0xFF122016);
+  late Color secondaryText = const Color(0xFF4A5C50);
+  late Color primaryBackground = const Color(0xFFF7FAF5);
+  late Color secondaryBackground = const Color(0xFFFFFFFF);
+  late Color accent1 = const Color(0xFFDCEBCB);
+  late Color accent2 = const Color(0xFFFDF0E6);
+  late Color accent3 = const Color(0xFFE6F0F4);
   late Color accent4 = const Color(0xCCFFFFFF);
-  late Color success = const Color(0xFF65CDA0);
-  late Color warning = const Color(0xFFFDCB6E);
-  late Color error = const Color(0xFFD63031);
+  late Color success = const Color(0xFF769C47);
+  late Color warning = const Color(0xFFA9521A);
+  late Color error = const Color(0xFFC4402F);
   late Color info = const Color(0xFF00CEC9);
 
-  late Color surfaceVariant = const Color(0xFFDFE6E9);
+  late Color neutralPanel = const Color(0xFFFFFFFF);
+  late Color onPrimary = const Color(0xFFFFFFFF);
+  late Color softShadow = const Color(0x33000000);
+  late Color lightCardShadow = const Color(0x000F2817);
+  late Color weatherLowInk = const Color(0xFF153868);
+  late Color weatherHighInk = const Color(0xFF7E1624);
+  late Color tabBarSurface = const Color(0xFFF7FAF5);
+  late Color tabBarIdleInk = const Color(0xFF4A5C50);
+  late Color tabBarActiveInk = const Color(0xFF2E5E36);
+  late Color tabBarActivePill = const Color(0xFFDCEBCB);
+  late Color packedGreen = const Color(0xFF3E7A28);
+  late Color packedGreenTint = const Color(0x303E7A28);
+  late Color pendingYellow = const Color(0xFFC2720C);
+  late Color pendingYellowTint = const Color(0x30C2720C);
+  late Color unpackedOrange = const Color(0xFFC25C38);
+  late Color unpackedOrangeTint = const Color(0x30C25C38);
+  late Color calendarEventSlate = const Color(0xFF6B7870);
+  late Color calendarEventTint = const Color(0x306B7870);
+  late Color linkGreen = const Color(0xFF2E5E36);
+  late Color subtleText = const Color(0xFF66786C);
+  late Color subtleDivider = const Color(0xFFE3EBE0);
+  late Color warmTerracottaTint = const Color(0xFFF3E7DF);
+  late Color selectedSurface = const Color(0xFFE6ECDE);
+  late Color onLimeCta = const Color(0xFF141C17);
 }
 
 abstract class Typography {
@@ -349,24 +395,47 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFFF1F2F6);
-  late Color secondary = const Color(0xFFB2BEC3);
-  late Color tertiary = const Color(0xFF74B9FF);
-  late Color alternate = const Color(0xFF485460);
-  late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFFD2DAE2);
-  late Color primaryBackground = const Color(0xFF1E272E);
-  late Color secondaryBackground = const Color(0xFF2D3436);
-  late Color accent1 = const Color(0x4C4B39EF);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0xFF808E9B);
+  late Color primary = const Color(0xFF769C47);
+  late Color secondary = const Color(0xFF9DB681);
+  late Color tertiary = const Color(0xFFE58A52);
+  late Color alternate = const Color(0xFF2D322D);
+  late Color primaryText = const Color(0xFFF3F6F4);
+  late Color secondaryText = const Color(0xFF9BA49C);
+  late Color primaryBackground = const Color(0xFF121412);
+  late Color secondaryBackground = const Color(0xFF1C201D);
+  late Color accent1 = const Color(0xFF243628);
+  late Color accent2 = const Color(0xFF34241B);
+  late Color accent3 = const Color(0xFF1D2E36);
   late Color accent4 = const Color(0xB2262D34);
-  late Color success = const Color(0xFF55E6C1);
-  late Color warning = const Color(0xFFFFEAA7);
-  late Color error = const Color(0xFFFF7675);
+  late Color success = const Color(0xFF9DB681);
+  late Color warning = const Color(0xFFF2A751);
+  late Color error = const Color(0xFFE87766);
   late Color info = const Color(0xFF81ECEC);
 
-  late Color surfaceVariant = const Color(0xFFED850D);
+  late Color neutralPanel = const Color(0xFF1C201D);
+  late Color onPrimary = const Color(0xFF121412);
+  late Color softShadow = const Color(0x55000000);
+  late Color lightCardShadow = const Color(0x000F2817);
+  late Color weatherLowInk = const Color(0xFF8AC3FF);
+  late Color weatherHighInk = const Color(0xFFFF9F9C);
+  late Color tabBarSurface = const Color(0xFF121212);
+  late Color tabBarIdleInk = const Color(0xFF9E9E9E);
+  late Color tabBarActiveInk = const Color(0xFFFFFFFF);
+  late Color tabBarActivePill = const Color(0xFF22331C);
+  late Color packedGreen = const Color(0xFFAADA70);
+  late Color packedGreenTint = const Color(0x3DAADA70);
+  late Color pendingYellow = const Color(0xFFFAC65D);
+  late Color pendingYellowTint = const Color(0x3DFAC65D);
+  late Color unpackedOrange = const Color(0xFFE58A52);
+  late Color unpackedOrangeTint = const Color(0x3DE58A52);
+  late Color calendarEventSlate = const Color(0xFF848E86);
+  late Color calendarEventTint = const Color(0x3D848E86);
+  late Color linkGreen = const Color(0xFFF3F6F4);
+  late Color subtleText = const Color(0xFF7B867C);
+  late Color subtleDivider = const Color(0xFF222822);
+  late Color warmTerracottaTint = const Color(0xFF3A3324);
+  late Color selectedSurface = const Color(0xFF2E3330);
+  late Color onLimeCta = const Color(0xFF121412);
 }
 
 class FFDesignTokens {
